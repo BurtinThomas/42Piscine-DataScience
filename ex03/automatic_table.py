@@ -26,7 +26,7 @@ def insert_data_into_table(table_name, df, cur):
             print("good")
         except Exception as e:
             print(f"Erreur avec la ligne {row.name}: {e}")
-            continue 
+            return
 
 def main():
     try:
