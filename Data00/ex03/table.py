@@ -39,11 +39,3 @@ def create_table(path, table_name):
         engine.dispose()
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
-
-
-def main():
-    create_table("../subject/customer/data_2022_dec.csv", "data_2022_dec")
-
-
-if __name__ == "__main__":
-    main()
