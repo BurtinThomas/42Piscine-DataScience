@@ -23,7 +23,7 @@ def insert_data_into_table(table_name, df, cur):
     for index, row in df.iterrows():
         try:
             cur.execute(insert_query, tuple(row))
-            print("good")
+            print(row)
         except Exception as e:
             print(f"Erreur avec la ligne {row.name}: {e}")
             return
@@ -43,7 +43,6 @@ def main():
             if file.endswith(".csv"):
                 create_table(os.path.splitext(file)[0], cur)
                 df = pandas.read_csv(os.path.join(customer_folder, file))
-                df = df.head()
                 insert_data_into_table(os.path.splitext(file)[0], df, cur)
 
         cur.close()

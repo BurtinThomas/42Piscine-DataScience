@@ -4,8 +4,8 @@ import pandas
 def create_table(table_name, cur):
     cur.execute(f"""
         CREATE TABLE IF NOT EXISTS {table_name} (
-            product_id BIGINT,
-            category_id BIGINT,
+            product_id SERIAL,
+            category_id VARCHAR(255),
             brand VARCHAR(255)
         );
     """)
@@ -39,7 +39,6 @@ def main():
         
         df = pandas.read_csv(path)
         df = df.drop(df.columns[2], axis=1)
-        df = df.dropna()
         insert_data_into_table(table_name, df, cur)
 
         cur.close()
