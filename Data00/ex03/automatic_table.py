@@ -4,7 +4,7 @@ import os
 
 def create_table(file, cur):
     cur.execute(f"""
-        CREATE TABLE {file} (
+        CREATE TABLE IF NOT EXISTS {file} (
             event_time TIMESTAMP,
             event_type VARCHAR(255),
             product_id INT,

@@ -1,6 +1,5 @@
 import psycopg2
 import pandas
-import os
 
 def create_table(table_name, cur):
     cur.execute(f"""

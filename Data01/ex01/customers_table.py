@@ -1,9 +1,10 @@
 import psycopg2
-import pandas
-import os
 
 def main():
     try:
+        with open("customers_table.sql", "r") as file:
+            query = file.read()
+
         conn = psycopg2.connect(
             host="localhost",
             database="piscineds",
@@ -11,28 +12,12 @@ def main():
             password="toto"
         )
         cur = conn.cursor()
-
-        file = "data_2022_dec.csv"
-        file_name_without_extension = os.path.splitext(file)[0]
-
-        cur.execute(f"""
-        CREATE TABLE {file_name_without_extension} (
-            event_time TIMESTAMP,
-            event_type VARCHAR(50),
-            product_id INT,
-            price FLOAT,
-            user_id INT,
-            user_session INT
-        );
-        """)
-
+        cur.execute(query)
         cur.close()
         conn.commit()
         conn.close()
-
     except Exception as error:
         print(f"{Exception.__name__} : {error}")
-
 
 if __name__ == "__main__":
     main()
