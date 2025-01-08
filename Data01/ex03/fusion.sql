@@ -1,14 +1,3 @@
-CREATE TABLE item_dedup (LIKE item);
-
-INSERT INTO item_dedup
-SELECT DISTINCT ON (product_id) product_id, category_id, brand
-FROM item;
-
-DROP TABLE item;
-
-ALTER TABLE item_dedup
-RENAME TO item;
-
 CREATE TABLE customers_left_joined_item (
   event_time TIMESTAMP,
   event_type VARCHAR(255),

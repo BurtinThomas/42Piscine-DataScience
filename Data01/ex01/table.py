@@ -10,14 +10,12 @@ from sqlalchemy import (
     String
 )
 
-
 def is_table_exist(engine, table_name):
     metadata = MetaData()
     metadata.reflect(bind=engine)
     if table_name in metadata.tables:
         print(f"Table {table_name} already exist.")
     return table_name in metadata.tables
-
 
 def create_table(path, table_name):
     try:
@@ -39,11 +37,3 @@ def create_table(path, table_name):
         engine.dispose()
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
-
-
-def main():
-    create_table("data_2023_feb.csv", "customers")
-
-
-if __name__ == "__main__":
-    main()

@@ -1,10 +1,8 @@
 import psycopg2
-from table import create_table
 
 def main():
     try:
-        create_table("data_2023_feb.csv", "customers")
-        with open("customers_table.sql", "r") as file:
+        with open("remove_duplicates.sql", "r") as file:
             query = file.read()
 
         conn = psycopg2.connect(
@@ -23,6 +21,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#SELECT * FROM item where product_id = 5846774;
-#SELECT COUNT(*) FROM customers;
