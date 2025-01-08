@@ -1,7 +1,7 @@
 CREATE TABLE item_dedup (LIKE item);
 
 INSERT INTO item_dedup
-SELECT DISTINCT ON (product_id) product_id, category_id, category_code, brand
+SELECT DISTINCT ON (product_id) product_id, category_id, brand
 FROM item;
 
 DROP TABLE item;

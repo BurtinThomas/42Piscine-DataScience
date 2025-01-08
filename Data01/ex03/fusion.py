@@ -2,7 +2,7 @@ import psycopg2
 
 def main():
     try:
-        with open("customers_table.sql", "r") as file:
+        with open("fusion.sql", "r") as file:
             query = file.read()
 
         conn = psycopg2.connect(
